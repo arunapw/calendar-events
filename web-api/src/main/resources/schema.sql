@@ -1,5 +1,4 @@
-CREATE
-DATABASE "calendar-app";
+CREATE DATABASE "calendar-app";
 
 DROP TABLE IF EXISTS users;
 
@@ -11,13 +10,18 @@ CREATE TABLE IF NOT EXISTS users
     city TEXT
 );
 
+DROP TABLE IF EXISTS events;
 CREATE TABLE events
 (
     id                 BIGSERIAL PRIMARY KEY,
+    title              TEXT,
     from_timestamp     TIMESTAMP,
     to_timestamp       TIMESTAMP,
-    event_type         VARCHAR(255),
+    event_type         TEXT,
     description        TEXT,
+    color              TEXT,
+    snooze             BOOLEAN,
+    user_id            BIGINT,
     is_active          BOOLEAN,
     deletion_timestamp TIMESTAMP,
     creation_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
