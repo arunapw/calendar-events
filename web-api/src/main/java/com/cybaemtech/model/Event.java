@@ -1,5 +1,8 @@
 package com.cybaemtech.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -40,14 +43,16 @@ public class Event
     private String color;
 
     @Column(name = "is_active")
-    private Boolean isActive;
+    private Boolean isActive = Boolean.TRUE;
 
     @Column(name = "deletion_timestamp")
     private Timestamp deletionTimestamp;
 
+    @CreationTimestamp
     @Column(name = "creation_timestamp")
     private Timestamp creationTimestamp;
 
+    @UpdateTimestamp
     @Column(name = "update_timestamp")
     private Timestamp updateTimestamp;
 

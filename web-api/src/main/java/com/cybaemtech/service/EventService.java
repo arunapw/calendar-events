@@ -35,9 +35,15 @@ public class EventService
 
     private void sendEventEmail(Event event)
     {
-        //TODO : WRITE EMAIL BODY
+        String content = "Dear " + event.getUser().getUsername() + ",\n\nEvent has been created with below details.\n" +
+                "Title: " + event.getTitle() + "\n" +
+                "FromTime: " + event.getFromTimestamp() + "\n" +
+                "ToTime: " + event.getToTimestamp() + "\n" +
+                "Description: " + event.getDescription() + "\n\n" +
+                "Thank You,\nCybaemtech Support";
 
-        emailService.sendEmail("check in");
+
+        emailService.sendEmail(content, event.getUser().getEmail(), "Event added to calendar");
     }
 
     private void copy(Event event)
@@ -54,7 +60,7 @@ public class EventService
     public Event updateEvent(Long id, Event updatedEvent)
     {
         copy(updatedEvent);
-
+        sendEventEmail(updatedEvent);
         return eventRepository.findById(id).map(event ->
         {
             event.setTitle(updatedEvent.getTitle());
