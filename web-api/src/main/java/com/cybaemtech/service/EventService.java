@@ -37,7 +37,7 @@ public class EventService
     {
         //TODO : WRITE EMAIL BODY
 
-        emailService.sendEmail("check in");
+        emailService.sendEmail("check in","shubhw88@gmail.com", "Event added to calendar");
     }
 
     private void copy(Event event)
